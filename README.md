@@ -1,20 +1,18 @@
 # Credit_card_fraud_detection
-This project uses the Credit Card Fraud Detection Dataset 2023 which contains credit card transactions made by European cardholders in the year 2023. It comprises over 550,000 records, and the data has been anonymized to protect the cardholders' identities. The primary objective of this dataset is to facilitate the development of fraud detection algorithms and models to identify potentially fraudulent transactions.
+Context
+It is important that credit card companies are able to recognize fraudulent credit card transactions so that customers are not charged for items that they did not purchase.
 
-Key Features:
-id : Unique identifier for each transaction
-V1-V28 : Anonymized features representing various transaction attributes (e.g., time, location, etc.)
-Amount : The transaction amount
-Class : Binary label indicating whether the transaction is fraudulent (1) or not (0)
-Data Source: The dataset was collected from credit card transactions made by European cardholders in 2023, with sensitive information removed to ensure privacy and compliance with ethical guidelines. https://www.kaggle.com/datasets/nelgiriyewithana/credit-card-fraud-detection-dataset-2023
+Content
+The dataset contains transactions made by credit cards in September 2013 by European cardholders.
+This dataset presents transactions that occurred in two days, where we have 492 frauds out of 284,807 transactions. The dataset is highly unbalanced, the positive class (frauds) account for 0.172% of all transactions.
 
-Goal:
-Perform exploratory data analysis using data science techniques in Python/Jupyter Notebook and build machine-learning models for detecting credit-card frauds.
-Results:
-Initially, I experimented with a simple subset of features, V1-V5, for our classification model, resulting in a 6.6% misclassification rate. While this provided a baseline, I sought to improve model performance further.
+It contains only numerical input variables which are the result of a PCA transformation. Unfortunately, due to confidentiality issues, we cannot provide the original features and more background information about the data. Features V1, V2, … V28 are the principal components obtained with PCA, the only features which have not been transformed with PCA are 'Time' and 'Amount'. Feature 'Time' contains the seconds elapsed between each transaction and the first transaction in the dataset. The feature 'Amount' is the transaction Amount, this feature can be used for example-dependant cost-sensitive learning. Feature 'Class' is the response variable and it takes value 1 in case of fraud and 0 otherwise.
 
-I then explored more advanced techniques, including a Bagging Classification model, which achieved a significant reduction in the misclassification rate to just 0.06% using all V1-V28 features. This improvement demonstrated the value of ensemble methods in handling complex classification tasks.
+Given the class imbalance ratio, we recommend measuring the accuracy using the Area Under the Precision-Recall Curve (AUPRC). Confusion matrix accuracy is not meaningful for unbalanced classification.
 
-Subsequently, I employed a Random Forest Classification model with all V1-V28 features, which further enhanced performance with a remarkable 0.01% misclassification rate. The Random Forest's ability to capture complex relationships within the data was a key contributor to this achievement.
+Update (03/05/2021)
+A simulator for transaction data has been released as part of the practical handbook on Machine Learning for Credit Card Fraud Detection - https://fraud-detection-handbook.github.io/fraud-detection-handbook/Chapter_3_GettingStarted/SimulatedDataset.html. We invite all practitioners interested in fraud detection datasets to also check out this data simulator, and the methodologies for credit card fraud detection presented in the book.
 
-The top 3 anonymized features that were most significant were V1, V10, V14.
+Acknowledgements
+The dataset has been collected and analysed during a research collaboration of Worldline and the Machine Learning Group (http://mlg.ulb.ac.be) of ULB (Université Libre de Bruxelles) on big data mining and fraud detection.
+More details on current and past projects on related topics are available on https://www.researchgate.net/project/Fraud-detection-5 and the page of the DefeatFraud project
